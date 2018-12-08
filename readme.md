@@ -1,4 +1,2 @@
 
-React + GraphQL Exercise as taken from: 
-
-![Advanced React + GraphQL](https://advancedreact.com/images/ARG/arg-facebook-share.png)
+React + GraphQL Exercise as taken from Wes Bos's Advanced React + GraphQL course
