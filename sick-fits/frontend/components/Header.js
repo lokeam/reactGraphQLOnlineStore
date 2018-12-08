@@ -1,6 +1,18 @@
 import Nav from './Nav';
 import Link from 'next/link';
 import styled from 'styled-components';
+import Router from 'next/router';
+import NProgress from 'nprogress';
+
+Router.onRouteChangeStart = () => {
+	console.log('onRouteChangeStart triggered');
+}
+Router.onRouteChangeComplete = () => {
+	console.log('onRouteChangeComplete triggered');
+}
+Router.onRouteChangeError = () => {
+	console.log('onRouteChangeError triggered');
+}
 
 const Logo = styled.h1`
   font-size: 4rem;
@@ -16,7 +28,7 @@ const Logo = styled.h1`
   	text-decoration: none;
   }
 
-  @media (max-width: 1200px ) {
+  @media (max-width: 800px ) {
   	margin: 0;
   	text-align: center;
   }
@@ -24,30 +36,30 @@ const Logo = styled.h1`
 
 const StyledHeader = styled.header`
   .bar {
-  	border: 0 0 10px solid ${props => props.theme.black};
+  	border-bottom: 10px solid ${props => props.theme.black};
   	display: grid;
   	grid-tempate-columns: auto 1fr;
   	justify-content: space-between;
   	align-items: stretch;
 
-  	@media(max-width: 1200px) {
+  	@media(max-width: 800px) {
   		grid-tempate-columns: 1fr;
   		justify-content: center;
   	}
+
   .sub-bar {
     display: grid;
     grid-tempate-columns: 1fr auto;
-    border: 0 0 1px solid ${props => props.theme.lightgrey}; 
-    }
+    border-bottom: 1px solid ${props => props.theme.lightgrey}; 
   }
 `;
 
 const Header = () => (
-	<div className="header">
+	<StyledHeader>
 		<div className="bar">
 			<Logo>
-				<Link>
-					<a href="">Test site</a>					
+				<Link href="/">
+					<a>Test site</a>					
 				</Link>
 			</Logo>
 			<Nav />
@@ -56,7 +68,7 @@ const Header = () => (
 			<p>Search</p>
 		</div>
 		<div>Cart</div>
-	</div>
+	</StyledHeader>
 );
 
 export default Header;
